@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guess the Secret Number</title>
+<style>
+    input[type-number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type-number] {
+        -moz-appearance: textfield;
+    }
+</style>
+</head>
+
+<body>
+<h1>Guess the Secret Number (1-10)</h1>
+<input type="number" id="guess" min="1" max="10" placeholder="Enter a number">
+<button onclick="checkGuess()">Guess</button>
+<p id="message"></p>
+
+<script>
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
+
+    function checkGuess() {
+        let guessInput = document.getElementById('guess');
+        let message = document.getElementById('message');
+        let guess = parseInt(guessInput.value, 10);
+
+        if (isNaN(guess) || guess < 1 || guess > 10) {
+            message.textContent = "Please enter a number between 1 and 10.";
+            return;
+        }
+        if (guess === secretNumber) {
+            message.textContent = "Correct! You guessed the number!";
+        } else if (guess < secretNumber) {
+            message.textContent = "Two low! Try again.";
+        } else {
+            message.textContent = "Too high! Try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
