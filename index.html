@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html>
+<link rel="stylesheet" href="stylesheet.css">
+<body>
+    <h2>Student Information Form</h2>
+
+    <label>Name:</label>
+    <input type="text" id="name"><br><br>
+
+    <label>Age:</label>
+    <input type="text" id="age"><br><br>
+
+    <label>Grade Level:</label>
+    <input type="text" id="grade"><br><br>
+
+    <label>Section:</label>
+    <input type="text" id="section"><br><br>
+
+    <button onclick ="displayInfo()">Submit</button>
+
+    <h3>Current Time And Date:</h3>
+
+    <p id="dateTime"></p>
+
+    <div id = "profile">
+        <h3>Student Profile Card</h3>
+        <p id = "output"></p>
+    </div>
+    <script>
+        function displayInfo() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let grade = document.getElementById("grade").value;
+            let section = document.getElementById("section").value;
+
+            document.body.style.backgroundColor = "pink";
+
+            document.getElementById("profile").style.display = "block";
+
+            document.getElementById("output").innerHTML = 
+            "Welcome: " + name + 
+            "<br>Age: " + age +
+            "<br>Grade: " + grade +
+            "<br>Section: " + section;
+        }
+
+        setInterval(function(){
+            let now = new Date();
+            document.getElementById("dateTime").innerHTML =
+            now.toLocaleString();
+
+        },1000);
+    </script>
+</body>
+</html>
